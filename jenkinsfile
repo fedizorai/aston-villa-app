@@ -17,7 +17,9 @@ pipeline {
         }
         stage ("generate docker image") {
             steps {
-                bat "docker build -t astonvilla ."
+                 dir("astonvilla-app"){
+                    bat "docker build -t astonvilla ."
+                }                
             }
         }
     }
