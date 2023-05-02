@@ -11,7 +11,7 @@ pipeline {
         }
         stage ("Clone repo"){
             steps {
-                bat "git clone https://github.com/kakachiSensei/astonvilla-app.git"
+                bat "git clone https://kakachiSensei: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@github.com/kakachiSensei/astonvilla-app.git"
             }
         }
         stage ("Build"){
