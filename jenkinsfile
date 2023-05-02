@@ -1,0 +1,32 @@
+pipeline {
+    agent any 
+    tools { 
+        maven 'maven'
+    }
+    stages {
+        stage ("Clean up"){
+            steps {
+                deleteDir()
+            }
+        }
+        stage ("Clone repo"){
+            steps {
+                bat "git clone https://github.com/kakachiSensei/astonvilla-app.git"
+            }
+        }
+        stage ("Build"){
+            steps {
+                dir("astonvilla-app"){
+                    bat "mvn clean install"
+                }
+            }
+        }
+        stage("Test"){
+            steps{
+                dir("astonvilla-app"){
+                    bat "mvn test"
+                }
+            }
+        }
+    }
+}
