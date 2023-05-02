@@ -17,14 +17,7 @@ pipeline {
         stage ("Build"){
             steps {
                 dir("astonvilla-app"){
-                    bat "mvn clean install"
-                }
-            }
-        }
-        stage("Test"){
-            steps{
-                dir("astonvilla-app"){
-                    bat "mvn test"
+                    bat "npm install"
                 }
             }
         }
