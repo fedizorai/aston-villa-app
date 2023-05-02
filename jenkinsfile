@@ -15,11 +15,9 @@ pipeline {
                 bat "git clone https://kakachiSensei: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@github.com/kakachiSensei/astonvilla-app.git"
             }
         }
-        stage ("Build"){
+        stage ("generate docker image") {
             steps {
-                dir("astonvilla-app"){
-                    bat "npm install"
-                }
+                bat "docker build -t astonvilla ."
             }
         }
     }
