@@ -1,5 +1,8 @@
 pipeline {
     agent any 
+    environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+	}
     tools { 
         maven 'maven'
         nodejs '14.17.6'
@@ -22,6 +25,12 @@ pipeline {
                 }                
             }
         }
+        stage('Login to dockerhub') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
         stage ("push docker image") {
             steps {
                  dir("astonvilla-app"){
