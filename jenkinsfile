@@ -18,7 +18,14 @@ pipeline {
         stage ("generate docker image") {
             steps {
                  dir("astonvilla-app"){
-                    bat "docker build -t astonvilla ."
+                    bat "docker build -t kakachisensei/astonvilla-app ."
+                }                
+            }
+        }
+        stage ("push docker image") {
+            steps {
+                 dir("astonvilla-app"){
+                    bat "docker push kakachisensei/astonvilla-app"
                 }                
             }
         }
