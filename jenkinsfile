@@ -25,10 +25,7 @@ pipeline {
                      bat """
                      git checkout master
                      """     
-                     if (fileExists("/kakachiSensei/astonvilla-app/version.txt") {
-                        def file = readFile(file: "/kakachiSensei/astonvilla-app/version.txt") 
-                        echo "success"
-                    }
+                     echo "success"
                   }
                 }   
               }
