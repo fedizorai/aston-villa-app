@@ -25,13 +25,15 @@ pipeline {
                      bat """
                      git checkout master
                      """     
-                    if (fileExists("/kakachiSensei/astonvilla-app/version.txt") {
-                    def file = readFile(file: "/kakachiSensei/astonvilla-app/version.txt") 
-                     }
-                  }
-                }   
-              }
+                        try {
+                        file = readFile(file: "/myrepo/${params.value}.txt") 
+                        }catch(e) {
+                        isSuccess = false
+                         }
+                    }   
+                }
             }
+        }   
         stage ("generate docker image") {
             steps {
                  dir("astonvilla-app"){
