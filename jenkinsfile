@@ -22,9 +22,11 @@ pipeline {
             steps {
               script {
                dir("astonvilla-app"){
-                     bat "git checkout master"     
+                     bat """
+                     git checkout master
+                     """     
                      def file = readFile(file: "/kakachiSensei/version.txt") 
-                     echo "success"
+                     echo "${file}"
                      }   
                  }
             }
