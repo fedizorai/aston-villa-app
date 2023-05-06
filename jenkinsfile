@@ -21,10 +21,12 @@ pipeline {
         stage ("Versioning") {
             steps {
               script {
-                    bat "git checkout master"     
-                    def file = readFile(file: "/kakachiSensei/version.txt") 
-                    echo "success"
-                    }
+               dir("astonvilla-app"){
+                     bat "git checkout master"     
+                     def file = readFile(file: "/kakachiSensei/version.txt") 
+                     echo "success"
+                     }   
+                 }
             }
         }
         stage ("generate docker image") {
