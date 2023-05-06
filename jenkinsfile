@@ -22,12 +22,7 @@ pipeline {
             steps {
               script {
                dir("astonvilla-app"){
-                     bat " git checkout master "     
-                     bat """
-                      set /p version=<version.txt 
-                      """
-                      def version2= %version%
-                      echo "${version2}"
+                        echo "${env.BUILD_NUMBER}"
                     }   
                 }
             }
