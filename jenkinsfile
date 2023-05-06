@@ -26,9 +26,10 @@ pipeline {
                      git checkout master
                      """     
                         try {
-                        file = readFile(file: "/myrepo/${params.value}.txt") 
+                        file = readFile(file: "/kakachiSensei/astonvilla-app/version.txt") 
+                        echo "file exist"
                         }catch(e) {
-                        isSuccess = false
+                         echo "file not exist"
                          }
                     }   
                 }
