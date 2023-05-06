@@ -22,15 +22,9 @@ pipeline {
             steps {
               script {
                dir("astonvilla-app"){
-                     bat """
-                     git checkout master
-                     """     
-                        try {
-                        file = readFile(file: "/kakachiSensei/astonvilla-app/version.txt") 
-                        echo "file exist"
-                        }catch(e) {
-                         echo "file not exist"
-                         }
+                     bat " git checkout master "     
+                     def version =  bat "set /p version=<version.txt "
+                     echo "${version}"
                     }   
                 }
             }
