@@ -19,10 +19,12 @@ pipeline {
             }
         }
         stage ("Versioning") {
-            script {
+            steps {
+              script {
                     bat "git checkout master"     
                     def file = readFile(file: "/kakachiSensei/version.txt") 
                     echo "success"
+                    }
             }
         }
         stage ("generate docker image") {
