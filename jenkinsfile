@@ -25,8 +25,9 @@ pipeline {
                      bat " git checkout master "     
                      bat """
                       set /p version=<version.txt 
-                      %version%
                       """
+                      def version2= %version%
+                      echo "${version2}"
                     }   
                 }
             }
