@@ -23,8 +23,10 @@ pipeline {
               script {
                dir("astonvilla-app"){
                      bat " git checkout master "     
-                     def version =  bat "set /p version=<version.txt "
-                     echo "${version}"
+                     bat """
+                      set /p version=<version.txt 
+                      %version%
+                      """
                     }   
                 }
             }
