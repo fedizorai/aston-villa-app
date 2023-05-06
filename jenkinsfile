@@ -18,19 +18,10 @@ pipeline {
                 bat "git clone https://kakachiSensei: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@github.com/kakachiSensei/astonvilla-app.git"
             }
         }
-        stage ("Versioning") {
-            steps {
-              script {
-               dir("astonvilla-app"){
-                        echo "${env.BUILD_NUMBER}"
-                    }   
-                }
-            }
-        }   
         stage ("generate docker image") {
             steps {
                  dir("astonvilla-app"){
-                    bat "docker build -t kakachisensei/astonvilla-app ."
+                    bat "docker build -t kakachisensei/astonvilla-app:1.1.${env.BUILD_NUMBER} ."
                 }                
             }
         }
