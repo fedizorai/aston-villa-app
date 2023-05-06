@@ -33,7 +33,7 @@ pipeline {
         stage ("push docker image") {
             steps {
                  dir("astonvilla-app"){
-                    bat "docker push kakachisensei/astonvilla-app"
+                    bat "docker push kakachisensei/astonvilla-app:1.1.${env.BUILD_NUMBER}"
                 }                
             }
         }
