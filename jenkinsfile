@@ -28,12 +28,11 @@ pipeline {
                      if (fileExists("/kakachiSensei/astonvilla-app/version.txt") {
                         def file = readFile(file: "/kakachiSensei/astonvilla-app/version.txt") 
                         echo "success"
-                        }
-                     }   
+                    }
+                  }
+                }   
               }
-                 }
             }
-        }
         stage ("generate docker image") {
             steps {
                  dir("astonvilla-app"){
