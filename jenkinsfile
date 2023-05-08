@@ -25,14 +25,10 @@ pipeline {
                 }                
             }
         }
-        stage ("Login to dockerhub") {
-			steps {
-				bat "docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW "
-			}
-		}
         stage ("push docker image") {
             steps {
                  dir("astonvilla-app"){
+                    bat "docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW "
                     bat "docker push kakachisensei/astonvilla-app:1.1.${env.BUILD_NUMBER}"
                 }                
             }
