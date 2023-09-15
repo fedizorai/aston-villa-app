@@ -1,8 +1,5 @@
 pipeline {
     agent any 
-    environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
-	}
     tools { 
         maven 'maven'
         nodejs '14.17.6'
@@ -15,7 +12,7 @@ pipeline {
         }
         stage ("Clone repo"){
             steps {
-                bat "git clone https://kakachiSensei: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@github.com/kakachiSensei/astonvilla-app.git"
+                bat "git clone https://github.com/Raouf-Rhimi/astonvilla-app.git"
             }
         }
         stage ("Generate docker image") {
@@ -28,29 +25,7 @@ pipeline {
         stage ("push docker image") {
             steps {
                  dir("astonvilla-app"){
-                    bat "docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW "
                     bat "docker push kakachisensei/astonvilla-app:1.1.${env.BUILD_NUMBER}"
-                }                
-            }
-        }
-        stage ("Clone GitOps Repo"){
-            steps {
-                bat "git clone https://kakachiSensei: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@github.com/kakachiSensei/k8s-manifests.git"
-            }
-        }
-        stage ("Update Manifests") {
-            steps {
-                 dir("k8s-manifests/astonvilla-app"){
-                    script {
-                        bat """
-                        powershell -command  "(gc astonvilla-deployment.yaml) -replace 'image: .*', 'image: kakachisensei/astonvilla-app:1.1.${env.BUILD_NUMBER}' | Out-File -encoding ASCII astonvilla-deployment.yaml"
-                        """
-                        bat """
-                         git add .
-                         git commit -m "version updated"
-                         git push -u origin master
-                        """
-                    }
                 }                
             }
         }
