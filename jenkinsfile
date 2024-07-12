@@ -2,7 +2,7 @@ pipeline {
     agent any 
     tools { 
         maven 'maven'
-        nodejs '12.7.0'
+        nodejs 'nodejs'
     }
     stages {
         stage ("Clean up"){
