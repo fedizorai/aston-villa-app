@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Clean workspace') {
             steps {
-                git clone https://github.com/Raouf-Rhimi/astonvilla-app.git
+                git clone "https://github.com/Raouf-Rhimi/astonvilla-app.git"
                 sh 'ls'
             }
         }
