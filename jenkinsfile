@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clean workspace') {
             steps {
-                sh 'sudo rm -rf /root/.jenkins/workspace/astonvilla/*'
+               
 
             }
         }
