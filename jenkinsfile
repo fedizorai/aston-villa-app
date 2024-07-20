@@ -7,7 +7,7 @@ pipeline {
                 sh 'ls'
             }
         }
-        stage('Clean workspace') {
+        stage('Clone astonvilla application') {
             steps {
                 sh 'git clone https://github.com/Raouf-Rhimi/astonvilla-app.git'
                 sh 'ls'
