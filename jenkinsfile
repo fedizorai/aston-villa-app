@@ -4,14 +4,18 @@ pipeline {
         stage('Clean workspace') {
             steps {
                 sh 'sudo rm -rf /root/.jenkins/workspace/astonvilla/*'
-                sh 'ls'
+
             }
         }
         stage('Clone astonvilla application') {
             steps {
                 sh 'git clone https://github.com/Raouf-Rhimi/astonvilla-app.git'
-                sh 'ls'
-                sh 'pwd'
+            }
+        }
+        stage('Build docker image') {
+            steps {
+                sh 'docker build -t kakachisensei/astonvilla-front:1.0.${env.BUILD_NUMBER} .'
+                sh 'docker images'
             }
         }
     }
