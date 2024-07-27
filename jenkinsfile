@@ -4,12 +4,25 @@ pipeline {
         stage ("Clean up"){
             steps {
                 sh 'rm -rf /root/.jenkins/workspace/astonvilla/*'
-                sh 'ls'
             }
         }
         stage ("Clone repo"){
             steps {
                 sh "git clone https://github.com/Raouf-Rhimi/astonvilla-app.git"
+            }
+        }
+        stage ("run sonar server") {
+            steps {
+                 dir("astonvilla-app"){
+                    sh "docker compose -f sonar-docker-compose.yaml up -d"
+                }                
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube Server') {
+                    sh 'sonar-scanner'
+                }
             }
         }
         stage ("Generate docker image") {
