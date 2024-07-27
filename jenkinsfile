@@ -6,11 +6,6 @@ pipeline {
                 sh 'rm -rf /root/.jenkins/workspace/astonvilla/*'
             }
         }
-        stage ("Clone repo"){
-            steps {
-                sh "git clone https://github.com/Raouf-Rhimi/astonvilla-app.git"
-            }
-        }
         stage ("run sonar server") {
             steps {
                  dir("astonvilla-app"){
