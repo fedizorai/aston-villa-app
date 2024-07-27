@@ -6,6 +6,11 @@ pipeline {
                 sh 'rm -rf /root/.jenkins/workspace/astonvilla/*'
             }
         }
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/Raouf-Rhimi/astonvilla-app.git'
+            }
+        }
         stage ("run sonar server") {
             steps {
                  dir("astonvilla-app"){
