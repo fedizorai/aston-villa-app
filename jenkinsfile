@@ -6,9 +6,9 @@ pipeline {
                  deleteDir()
             }
         }
-        stage('Checkout') {
+        stage('Run Sonar Server') {
             steps {
-              git url: 'https://github.com/Raouf-Rhimi/astonvilla-app.git'
+              sh "docker compose -f sonar-docker-compose.yaml up -d"
             }
         }
         stage ("Generate docker image") {
