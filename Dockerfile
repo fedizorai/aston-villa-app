@@ -4,9 +4,9 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install --force
 
-RUN npm install -g @angular/cli@8.1.2
+RUN npm install -g @angular/cli@8.1.2 --force
 
 COPY . .
 
