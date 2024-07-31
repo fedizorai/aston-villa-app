@@ -8,6 +8,8 @@ pipeline {
         }
         stage('Run Sonar Server') {
             steps {
+              sh "pwd"
+              sh "ls"
               sh "docker-compose -f sonar-docker-compose.yaml up -d"
             }
         }
