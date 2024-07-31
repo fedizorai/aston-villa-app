@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Run Sonar Server') {
             steps {
-              sh "docker compose -f sonar-docker-compose.yaml up -d"
+              sh "docker-compose -f sonar-docker-compose.yaml up -d"
             }
         }
         stage ("Generate docker image") {
