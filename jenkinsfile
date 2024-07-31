@@ -6,10 +6,13 @@ pipeline {
                  deleteDir()
             }
         }
+        stage('Checkout') {
+            steps {
+              git : 'https://github.com/Raouf-Rhimi/astonvilla-app.git'
+            }
+        }
         stage('Run Sonar Server') {
             steps {
-              sh "pwd"
-              sh "ls"
               sh "docker-compose -f sonar-docker-compose.yaml up -d"
             }
         }
