@@ -8,21 +8,7 @@ pipeline {
         }
         stage('Checkout') {
             steps {
-                sh 'git  clone https://github.com/Raouf-Rhimi/astonvilla-app.git'
-            }
-        }
-        stage ("run sonar server") {
-            steps {
-                 dir("astonvilla-app"){
-                    sh "docker-compose -f sonar-docker-compose.yaml up -d"
-                }                
-            }
-        }
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube Server') {
-                    sh 'sonar-scanner'
-                }
+                git url: 'https://github.com/Raouf-Rhimi/astonvilla-app.git'
             }
         }
         stage ("Generate docker image") {
