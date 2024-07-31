@@ -13,7 +13,7 @@ pipeline {
         }
         stage ("Generate docker image") {
             steps {
-                sh 'docker build -t kakachisensei/astonvilla-app:1.1.${env.BUILD_NUMBER} .'
+                sh "docker build -t kakachisensei/astonvilla-app:1.1.${env.BUILD_NUMBER} ."
             }
         }
         stage ("push docker image") {
