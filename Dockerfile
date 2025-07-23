@@ -1,19 +1,13 @@
-FROM node:12.7-alpine as build
+FROM node:12.7-alpine AS build
 
 WORKDIR /app
-
-COPY package*.json ./
-
+COPY . .
+RUN npm install -g @angular/cli@8.1.2 --force
 RUN npm install --force
 
-RUN npm install -g @angular/cli@8.1.2 --force
+CMD ["ng","serve","--host ","0.0.0.0"]
+EXPOSE 4200
 
-COPY . .
 
-RUN ng build
 
-FROM nginx:latest
 
-COPY --from=build app/dist/aston-villa-app /usr/share/nginx/html
-
-EXPOSE 80
